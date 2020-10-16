@@ -17,6 +17,7 @@
         "no-tabs": 0,
         "no-console": "warn",
         "no-debugger": "warn",
+        "vue/no-use-v-if-with-v-for": "off",
     },
     "overrides": [
         {

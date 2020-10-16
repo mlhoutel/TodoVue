@@ -1,10 +1,21 @@
 <template>
-    <li class="todolistitem">
+    <li class="todolistitem" v-bind:class="{ done: item.done }">
         <div>
             <h3>{{ item.icon }} {{ item.title }}</h3>
             <p v-if="item.message.trim() !== ''">{{ item.message }}</p>
-            <button class="validate">Validate</button>
-            <button class="delete">X</button>
+            <button
+                class="validate"
+                v-if="item.done"
+                v-on:click="item.done = false"
+            >
+                Cancel
+            </button>
+            <button class="validate" v-else v-on:click="item.done = true">
+                Validate
+            </button>
+            <button class="delete" v-on:click="remove($event, item)">
+                X
+            </button>
         </div>
     </li>
 </template>
@@ -17,6 +28,10 @@ export default defineComponent({
     props: {
         item: {
             type: Object,
+            required: true,
+        },
+        remove: {
+            type: Function,
             required: true,
         },
     },
@@ -32,6 +47,13 @@ export default defineComponent({
     overflow: hidden;
     border-radius: 5px;
     margin-top: 20px;
+
+    -webkit-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+}
+.done {
+    filter: hue-rotate(10deg) grayscale(60%) contrast(80%);
 }
 div {
 }

@@ -4,21 +4,49 @@
             <h1>{{ icon }} - {{ title }}</h1>
             <p>{{ message }}</p>
         </div>
-        <form v-on:submit.prevent="addNewTodo">
+        <form v-on:submit.prevent>
             <label for="new-todo">Add a task</label>
             <input
-                v-model="newTodoText"
+                v-model="todotitle"
                 id="new-todo"
                 placeholder="Ex. feed the cat"
             />
-            <button>Add</button>
+            <!-- prettier-ignore -->
+            <button v-on:click="add($event, todotitle, items); todotitle = ''">
+                Add
+            </button>
         </form>
+        <div class="selector">
+            <button
+                class="select-all"
+                :class="{ selected: AllSelected }"
+                v-on:click="selected = 0"
+            >
+                All
+            </button>
+            <button
+                class="select-todo"
+                :class="{ selected: TodoSelected }"
+                v-on:click="selected = 1"
+            >
+                Todo
+            </button>
+
+            <button
+                class="select-done"
+                :class="{ selected: DoneSelected }"
+                v-on:click="selected = 2"
+            >
+                Done
+            </button>
+        </div>
         <ul>
             <TodoListItem
-                v-for="(item, index) in items"
+                v-for="(item, index) in Items()"
                 :item="item"
                 :index="index"
                 :key="item.id"
+                :remove="SelfRemove"
             />
         </ul>
     </div>
@@ -28,6 +56,13 @@
 import { defineComponent } from 'vue'
 import TodoListItem from '@/components/TodoListItem.vue'
 
+interface Item {
+    id: Number
+    icon: String
+    title: String
+    message: String
+    done: Boolean
+}
 export default defineComponent({
     name: 'TodoList',
     components: {
@@ -38,9 +73,47 @@ export default defineComponent({
         icon: String,
         title: String,
         message: String,
+        selected: Number,
         items: {
             type: Array,
             default: () => [],
+        },
+        add: {
+            type: Function,
+            required: true,
+        },
+        remove: {
+            type: Function,
+            required: true,
+        },
+    },
+    methods: {
+        SelfRemove(event: Event, index: Number) {
+            this.remove(event, index, this.items)
+        },
+        AllSelected() {
+            console.log(this.selected)
+            let select: Boolean = this.selected == 0
+            return select
+        },
+        TodoSelected() {
+            return this.selected == 1
+        },
+        DoneSelected() {
+            return this.selected == 2
+        },
+        Items() {
+            let array = []
+            for (let item of this.items) {
+                let properties = []
+                let keys = Object.getOwnPropertyNames(item)
+
+                console.log(Object.values(keys))
+                for (let key of keys) {
+                }
+                array.push(item)
+            }
+            return array
         },
     },
 })
@@ -63,6 +136,10 @@ export default defineComponent({
     background-color: #007e69;
     padding: 20px;
     margin-bottom: 20px;
+
+    -webkit-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
 }
 .intro h1 {
     color: #dbd9d9;
@@ -81,11 +158,15 @@ export default defineComponent({
 form {
     position: relative;
     padding-top: 20px;
-    margin: 10px auto auto auto;
+    margin: 10px auto 10px auto;
     width: 300px;
     display: inline-block;
+
+    -webkit-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
 }
-label {
+form label {
     position: absolute;
     display: block;
     top: 0px;
@@ -94,7 +175,7 @@ label {
     color: #dbd9d9;
     font-style: italic;
 }
-input {
+form input {
     width: auto;
     height: 40px;
     background-color: #dbd9d9;
@@ -102,10 +183,10 @@ input {
     padding-left: 20px;
     border-radius: 5px 0px 0px 0px;
 }
-input::placeholder {
+form input::placeholder {
     color: #007e69;
 }
-button {
+form button {
     width: 100px;
     height: 43px;
     background-color: #007e69;
@@ -114,13 +195,46 @@ button {
     font-weight: bold;
 }
 
-input,
-button {
+form input,
+form button {
     border: none;
     border-bottom: 2px solid #007e69;
 }
-input:focus,
-button:focus {
+form input:focus,
+form button:focus {
     outline: none;
+}
+
+.selector {
+    overflow: hidden;
+    border-radius: 0px 0px 10px 10px;
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    padding: 0px;
+
+    -webkit-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.49);
+}
+.selector button {
+    display: inline-block;
+    width: 33.33%;
+    height: 30px;
+    border: none;
+    border-top: 5px solid #007e69;
+    background-color: #dbd9d9;
+    color: #007e69;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.selector button:focus {
+    outline: none;
+}
+
+button.selected {
+    background-color: #007e69;
+    color: #dbd9d9;
 }
 </style>
