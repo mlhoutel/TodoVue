@@ -85,6 +85,7 @@ export default {
             items: Array<Object>
         ) {
             items[items.indexOf(item)] = value
+            this.save(event, items)
         },
         read(event: Event) {
             const fs = require('fs')
@@ -95,8 +96,8 @@ export default {
                 console.log(data.toString())
             })
         },
-        save(event: Event) {
-            const data = JSON.stringify('...')
+        save(event: Event, items: Array<Object>) {
+            const data = JSON.stringify(items)
             const fs = require('fs')
             try {
                 fs.writeFileSync('items.txt', data, 'utf-8')

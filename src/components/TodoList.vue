@@ -8,12 +8,12 @@
         <form v-on:submit.prevent>
             <label for="new-todo">Add a task</label>
             <input
-                v-model="todotitle"
+                v-model="NewTitle"
                 id="new-todo"
                 placeholder="Ex. feed the cat"
             />
             <!-- prettier-ignore -->
-            <button v-on:click="add($event, todotitle, items); todotitle = ''">
+            <button v-on:click="SelfAdd($event, NewTitle)">
                 Add
             </button>
         </form>
@@ -85,23 +85,20 @@ export default defineComponent({
             type: Function,
             required: true,
         },
-        getselected: {
-            type: Function,
-            required: true,
-        },
-        setselected: {
-            type: Function,
-            required: true,
-        },
     },
     data() {
         return {
             Selected: this.selected,
+            NewTitle: '',
         }
     },
     methods: {
         SelfRemove(event: Event, item: Object) {
             this.remove(event, item, this.items)
+        },
+        SelfAdd(event: Event, title: String) {
+            this.add(event, title, this.items)
+            this.NewTitle = ''
         },
         SelfEditItem(event: Event, item: Object, value: Object) {
             this.editItem(event, item, value, this.items)

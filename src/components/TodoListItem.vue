@@ -8,7 +8,7 @@
                 src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/vue-dot-js.svg"
             />
             -->
-            <h3 v-html="item.icon"></h3>
+            <h3 contenteditable v-html="item.icon"></h3>
             <h3
                 contenteditable
                 spellcheck="false"
@@ -16,7 +16,7 @@
                     edit($event, item, {
                         icon: item.icon,
                         message: item.message,
-                        title: $event.target.innerHTML,
+                        title: $event.target.innerText,
                         done: item.done,
                     })
                 "
@@ -30,7 +30,7 @@
                 v-on:blur="
                     edit($event, item, {
                         icon: item.icon,
-                        message: $event.target.innerHTML,
+                        message: $event.target.innerText,
                         title: item.title,
                         done: item.done,
                     })
