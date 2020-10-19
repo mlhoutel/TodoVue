@@ -55,19 +55,12 @@ export default {
                         'Lorem ipsum dolor sit amet consectetur adipisicing elit. elit. Deleniti nam temporibus distinctio.',
                     done: false,
                 },
-                {
-                    id: 3,
-                    icon: '®',
-                    title: 'test',
-                    message: '',
-                    done: false,
-                },
             ],
             selected: 0,
         }
     },
     methods: {
-        add: function(event: Event, title: String, items: Array<Object>) {
+        add(event: Event, title: String, items: Array<Object>) {
             items.push({
                 icon: '',
                 title: title,

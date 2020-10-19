@@ -1,8 +1,23 @@
 <template>
     <li class="todolistitem" v-bind:class="{ done: item.done }">
         <div>
-            <h3>{{ item.icon }} {{ item.title }}</h3>
-            <p v-if="item.message.trim() !== ''">{{ item.message }}</p>
+            <!--
+            <img
+                height="24"
+                width="24"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/vue-dot-js.svg"
+            />
+            -->
+            <h3 contenteditable spellcheck="false">
+                {{ item.icon }} {{ item.title }}
+            </h3>
+            <p
+                contenteditable
+                spellcheck="false"
+                v-if="item.message.trim() !== ''"
+            >
+                {{ item.message }}
+            </p>
             <button
                 class="validate"
                 v-if="item.done"
@@ -84,7 +99,9 @@ p {
     border-radius: 3px;
 }
 .validate:focus,
-.delete:focus {
+.delete:focus,
+h3:focus,
+p:focus {
     outline: none;
 }
 </style>

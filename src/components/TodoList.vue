@@ -1,8 +1,8 @@
 <template>
     <div class="todolist">
         <div class="intro">
-            <h1>{{ icon }} - {{ title }}</h1>
-            <p>{{ message }}</p>
+            <h1 contenteditable spellcheck="false">{{ icon }} - {{ title }}</h1>
+            <p contenteditable spellcheck="false">{{ message }}</p>
         </div>
         <form v-on:submit.prevent>
             <label for="new-todo">Add a task</label>
@@ -19,30 +19,30 @@
         <div class="selector">
             <button
                 class="select-all"
-                :class="{ selected: AllSelected }"
-                v-on:click="selected = 0"
+                :class="{ selected: getSelected($event, 0, selected) }"
+                v-on:click="setSelected($event, 0, selected)"
             >
                 All
             </button>
             <button
                 class="select-todo"
-                :class="{ selected: TodoSelected }"
-                v-on:click="selected = 1"
+                :class="{ selected: getSelected($event, 1, selected) }"
+                v-on:click="setSelected($event, 1, selected)"
             >
                 Todo
             </button>
 
             <button
                 class="select-done"
-                :class="{ selected: DoneSelected }"
-                v-on:click="selected = 2"
+                :class="{ selected: getSelected($event, 2, selected) }"
+                v-on:click="setSelected($event, 2, selected)"
             >
                 Done
             </button>
         </div>
         <ul>
             <TodoListItem
-                v-for="(item, index) in Items()"
+                v-for="(item, index) in Items($event)"
                 :item="item"
                 :index="index"
                 :key="item.id"
@@ -56,13 +56,6 @@
 import { defineComponent } from 'vue'
 import TodoListItem from '@/components/TodoListItem.vue'
 
-interface Item {
-    id: Number
-    icon: String
-    title: String
-    message: String
-    done: Boolean
-}
 export default defineComponent({
     name: 'TodoList',
     components: {
@@ -75,7 +68,7 @@ export default defineComponent({
         message: String,
         selected: Number,
         items: {
-            type: Array,
+            type: Array as () => Array<any>,
             default: () => [],
         },
         add: {
@@ -86,34 +79,46 @@ export default defineComponent({
             type: Function,
             required: true,
         },
+        getselected: {
+            type: Function,
+            required: true,
+        },
+        setselected: {
+            type: Function,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            Selected: this.selected,
+        }
     },
     methods: {
         SelfRemove(event: Event, index: Number) {
             this.remove(event, index, this.items)
         },
-        AllSelected() {
-            console.log(this.selected)
-            let select: Boolean = this.selected == 0
-            return select
+        getSelected(event: Event, value: number): boolean {
+            return this.Selected == value
         },
-        TodoSelected() {
-            return this.selected == 1
+        setSelected(event: Event, value: number) {
+            this.Selected = value
         },
-        DoneSelected() {
-            return this.selected == 2
-        },
-        Items() {
-            let array = []
-            for (let item of this.items) {
-                let properties = []
-                let keys = Object.getOwnPropertyNames(item)
-
-                console.log(Object.values(keys))
-                for (let key of keys) {
-                }
-                array.push(item)
+        Items(event: Event) {
+            if (this.getSelected(event, 0)) {
+                return this.items
+            } else if (this.getSelected(event, 1)) {
+                return this.items.filter((item) => {
+                    if (item['done'] === false) {
+                        return item
+                    }
+                })
+            } else {
+                return this.items.filter((item) => {
+                    if (item['done'] === true) {
+                        return item
+                    }
+                })
             }
-            return array
         },
     },
 })
@@ -229,7 +234,9 @@ form button:focus {
     font-weight: bold;
 }
 
-.selector button:focus {
+.selector button:focus,
+h1:focus,
+p:focus {
     outline: none;
 }
 
