@@ -8,13 +8,33 @@
                 src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/vue-dot-js.svg"
             />
             -->
-            <h3 contenteditable spellcheck="false">
-                {{ item.icon }} {{ item.title }}
+            <h3 v-html="item.icon"></h3>
+            <h3
+                contenteditable
+                spellcheck="false"
+                v-on:blur="
+                    edit($event, item, {
+                        icon: item.icon,
+                        message: item.message,
+                        title: $event.target.innerHTML,
+                        done: item.done,
+                    })
+                "
+            >
+                {{ item.title }}
             </h3>
             <p
                 contenteditable
                 spellcheck="false"
-                v-if="item.message.trim() !== ''"
+                :class="{ emptymessage: isEmpty($event, item.message) }"
+                v-on:blur="
+                    edit($event, item, {
+                        icon: item.icon,
+                        message: $event.target.innerHTML,
+                        title: item.title,
+                        done: item.done,
+                    })
+                "
             >
                 {{ item.message }}
             </p>
@@ -49,6 +69,15 @@ export default defineComponent({
             type: Function,
             required: true,
         },
+        edit: {
+            type: Function,
+            required: true,
+        },
+    },
+    methods: {
+        isEmpty(event: Event, message: String): Boolean {
+            return message.trim() === ''
+        },
     },
 })
 </script>
@@ -70,12 +99,21 @@ export default defineComponent({
 .done {
     filter: hue-rotate(10deg) grayscale(60%) contrast(80%);
 }
-div {
-}
 h3 {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 p {
     color: #dbd9d9;
+}
+.emptymessage {
+    margin: 5px;
+    height: 5px;
+    overflow: hidden;
+}
+.emptymessage:focus {
+    height: auto;
 }
 .validate {
     width: 100%;

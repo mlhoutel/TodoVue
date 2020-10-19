@@ -9,6 +9,7 @@
             :selected="selected"
             :add="add"
             :remove="remove"
+            :editItem="editItem"
         />
     </div>
 </template>
@@ -61,8 +62,14 @@ export default {
     },
     methods: {
         add(event: Event, title: String, items: Array<Object>) {
+            if (title == undefined) {
+                return
+            }
+            if (title.length < 1) {
+                return
+            }
             items.push({
-                icon: '',
+                icon: 'N.',
                 title: title,
                 message: '',
                 done: false,
@@ -70,6 +77,14 @@ export default {
         },
         remove(event: Event, item: Object, items: Array<Object>) {
             items.splice(items.indexOf(item), 1)
+        },
+        editItem(
+            event: Event,
+            item: Object,
+            value: Object,
+            items: Array<Object>
+        ) {
+            items[items.indexOf(item)] = value
         },
         read(event: Event) {
             const fs = require('fs')

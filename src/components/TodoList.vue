@@ -1,7 +1,8 @@
 <template>
     <div class="todolist">
         <div class="intro">
-            <h1 contenteditable spellcheck="false">{{ icon }} - {{ title }}</h1>
+            <h1 v-html="icon"></h1>
+            <h1 contenteditable spellcheck="false">{{ title }}</h1>
             <p contenteditable spellcheck="false">{{ message }}</p>
         </div>
         <form v-on:submit.prevent>
@@ -47,6 +48,7 @@
                 :index="index"
                 :key="item.id"
                 :remove="SelfRemove"
+                :edit="SelfEditItem"
             />
         </ul>
     </div>
@@ -79,6 +81,10 @@ export default defineComponent({
             type: Function,
             required: true,
         },
+        editItem: {
+            type: Function,
+            required: true,
+        },
         getselected: {
             type: Function,
             required: true,
@@ -94,8 +100,11 @@ export default defineComponent({
         }
     },
     methods: {
-        SelfRemove(event: Event, index: Number) {
-            this.remove(event, index, this.items)
+        SelfRemove(event: Event, item: Object) {
+            this.remove(event, item, this.items)
+        },
+        SelfEditItem(event: Event, item: Object, value: Object) {
+            this.editItem(event, item, value, this.items)
         },
         getSelected(event: Event, value: number): boolean {
             return this.Selected == value
@@ -148,6 +157,10 @@ export default defineComponent({
 }
 .intro h1 {
     color: #dbd9d9;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 100%;
 }
 .intro p {
     color: #dbd9d9;
