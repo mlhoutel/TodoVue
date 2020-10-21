@@ -31,7 +31,7 @@ export default {
             icon: 'Icon',
             title: 'List Title',
             message:
-                'Task List text... Lorem ipsum dolor sit amet consectetur adipisicing elit. elit. Deleniti nam temporibus distinctio minima est facilis quo rerum, commodi modi vel exercitationem nemo repellendus sunt eos reiciendis consectetur? Aliquid, maiores quod',
+                'Task List text...',
             items: [],
             selected: 0,
         }
@@ -43,7 +43,7 @@ export default {
             let item = { icon: '', title: title, message: '', done: false }
             const axios = require('axios')
             axios.post('http://localhost:3023/items', item)
-            
+
             /* Update Current */
             items.push(item)
         },

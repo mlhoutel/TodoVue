@@ -1,5 +1,7 @@
 # TodoVue
 
+![Screenshot](screenshots/screenshot1.png?raw=true "Screenshot")
+
 ## Project setup
 ```
 npm install
