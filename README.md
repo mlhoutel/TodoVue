@@ -26,5 +26,5 @@ npm run lint
 ```
 
 ## Setup Detail
-see todo-vue\README.md for the Vue application
-see todo-api\README.md for the Node Api
+- [Vue Application README](todo-vue/README.md)
+- [Node Api README](todo-api/README.md)
