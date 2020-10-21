@@ -17,10 +17,10 @@ const itemsRoutes = function(app, fs) {
 
     // Create
     app.post('/items', function(req, res) {
-        readFile(function(data) { 
-            const newItemId = Object.keys(data).length + 1
-            data[newItemId] = req.body
-            writeFile(JSON.stringify(data, null, 2), function() { res.status(200).send('new item added') })
+        readFile(function(data) {
+            let obj = data //JSON.parse(data)
+            obj.items.push(req.body)
+            writeFile(JSON.stringify(obj, null, 2), function() { res.status(200).send('new item added') })
          }, true)
     })
 
@@ -32,17 +32,20 @@ const itemsRoutes = function(app, fs) {
     // Update
     app.put('/items/:id', function(req, res) {
         readFile(function(data) {
+            let obj = JSON.parse(data)
             const itemId = req.params['id']
-            data[itemId] = req.body
-            writeFile(JSON.stringify(data, null, 2), function() { res.status(200).send("item id:${itemId} updated")})
+            obj.items[itemId] = req.body
+            writeFile(JSON.stringify(obj, null, 2), function() { res.status(200).send(`item id:${itemId} updated`)})
         })
     })
     // Delete
     app.delete('/items/:id', function(req, res) {
         readFile(function(data) {
+            let object = JSON.parse(data)
+            let array = object.items
             const itemId = req.params['id']
-            delete data[itemId]
-            writeFile(JSON.stringify(data, null, 2), function() { res.status(200).send("item id:${itemId} removed")})
+            array.splice(itemId, 1)
+            writeFile(JSON.stringify(object, null, 2), function() { res.status(200).send(`item id:${itemId} removed`)})
         })
     })
 }

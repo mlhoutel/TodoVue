@@ -1,1 +1,23 @@
-"{\r\n    \r\n}"
+{
+  "data": true,
+  "items": [
+    {
+      "icon": "",
+      "message": "Add some text",
+      "title": "1. Create  cool App",
+      "done": false
+    },
+    {
+      "icon": "",
+      "message": "(No text needed, see next)",
+      "title": "2. Enjoy",
+      "done": false
+    },
+    {
+      "icon": "",
+      "title": "3. Example",
+      "message": "",
+      "done": false
+    }
+  ]
+}

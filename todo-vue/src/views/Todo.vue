@@ -32,35 +32,27 @@ export default {
             title: 'List Title',
             message:
                 'Task List text... Lorem ipsum dolor sit amet consectetur adipisicing elit. elit. Deleniti nam temporibus distinctio minima est facilis quo rerum, commodi modi vel exercitationem nemo repellendus sunt eos reiciendis consectetur? Aliquid, maiores quod',
-            items: [
-                    {
-                        "id": "0",
-                        "icon": "1",
-                        "title": "Idée",
-                        "message": "Faire une TodoList en Vue.js, ajouter/supprimer/modifier/valider les tâches...",
-                        "done": "false"
-                    },
-
-                ],
+            items: [],
             selected: 0,
         }
     },
     methods: {
         add(event: Event, title: String, items: Array<Object>) {
-            if (title == undefined) {
-                return
-            }
-            if (title.length < 1) {
-                return
-            }
-            items.push({
-                icon: 'N.',
-                title: title,
-                message: '',
-                done: false,
-            })
+            if (title == undefined) { return }
+            if (title.length < 1) { return }
+            let item = { icon: '', title: title, message: '', done: false }
+            const axios = require('axios')
+            axios.post('http://localhost:3023/items', item)
+            
+            /* Update Current */
+            items.push(item)
         },
         remove(event: Event, item: Object, items: Array<Object>) {
+            const axios = require('axios')
+            let index = items.indexOf(item)
+            axios.delete('http://localhost:3023/items/'+index)
+
+            /* Update Current */
             items.splice(items.indexOf(item), 1)
         },
         editItem(
@@ -69,24 +61,24 @@ export default {
             value: Object,
             items: Array<Object>
         ) {
-            items[items.indexOf(item)] = value
-            this.save(event, items)
-            
             const axios = require('axios')
-            axios.put('http://localhost:3023/items/'+items.indexOf(item), JSON.stringify(item)).then(function(response : any){
-                console.log(response.data)
-            })
+            let index = items.indexOf(item)
+            if (index < 0) { return }
+            axios.put('http://localhost:3023/items/'+index, value)
+            
+            /* Update Current */
+            items[items.indexOf(item)] = value
         },
         read(items: Array<Object>) {
             const axios = require('axios')
+            items.splice(0, items.length)
             axios.get('http://localhost:3023/items').then(function(response : any){
-                console.log(response.data)
+                let newitems : Array<any> = response.data["items"]
+                for (let newitem of Object.values(newitems)) {
+                    items.push(newitem)
+                }
             })
-        },
-        save(event: Event, items: Array<Object>) {
-            const axios = require('axios')
-            //axios.post('http://localhost:3023/items').then(function(response : any){ })
-        },
+        }
     },
 }
 </script>

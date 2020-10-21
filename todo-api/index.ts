@@ -12,5 +12,5 @@ app.use(bodyParser.json())
 
 const routes = require('./routes/routes.ts')(app, fs)
 const server = app.listen(port, () => {
-    console.log("Todo Api is listening on port ${port}!")
+    console.log(`Todo Api is listening on port ${port}!`)
 })
