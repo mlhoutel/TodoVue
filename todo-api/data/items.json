@@ -3,19 +3,49 @@
   "items": [
     {
       "icon": "",
-      "message": "Add some text",
-      "title": "1. Create  cool App",
+      "message": "<img height=\"24\" width=\"24\" src=\"https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/vue-dot-js.svg\"><br>",
+      "title": "1. Application architecture",
       "done": false
     },
     {
       "icon": "",
-      "message": "(No text needed, see next)",
-      "title": "2. Enjoy",
+      "message": "Cool interactions on buttons and filters",
+      "title": "3. Application interactions",
+      "done": true
+    },
+    {
+      "icon": "",
+      "message": "CRUD from the data of a json file",
+      "title": "4. Application Api",
       "done": false
     },
     {
       "icon": "",
-      "title": "3. Example",
+      "message": "",
+      "title": "5. Linking",
+      "done": true
+    },
+    {
+      "icon": "",
+      "message": "From the npm delivery icons?&nbsp;",
+      "title": "6. Add icons button on the todo items",
+      "done": false
+    },
+    {
+      "icon": "",
+      "message": "Same as for the list items",
+      "title": "7. Interactive data on the todo list",
+      "done": false
+    },
+    {
+      "icon": "",
+      "title": "8.Multiple Todo Lists?",
+      "message": "",
+      "done": false
+    },
+    {
+      "icon": "",
+      "title": "9. List theme?",
       "message": "",
       "done": false
     }

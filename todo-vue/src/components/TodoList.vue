@@ -122,15 +122,11 @@ export default defineComponent({
                 return this.items
             } else if (this.getSelected(event, 1)) {
                 return this.items.filter((item) => {
-                    if (item['done'] === false) {
-                        return item
-                    }
+                    if (item['done'] === false) { return item }
                 })
             } else {
                 return this.items.filter((item) => {
-                    if (item['done'] === true) {
-                        return item
-                    }
+                    if (item['done'] === true) { return item }
                 })
             }
         },
@@ -245,7 +241,7 @@ form button:focus {
     width: 33.33%;
     height: 30px;
     border: none;
-    border-top: 5px solid #007e69;
+    border-top: 2px solid #007e69;
     background-color: #dbd9d9;
     color: #007e69;
     font-size: 0.8em;

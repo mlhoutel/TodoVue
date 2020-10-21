@@ -27,25 +27,35 @@
                 contenteditable
                 spellcheck="false"
                 :class="{ emptymessage: isEmpty($event, item.message) }"
+                v-html="item.message "
                 v-on:blur="
                     edit($event, item, {
                         icon: item.icon,
-                        message: $event.target.innerText,
+                        message: $event.target.innerHTML,
                         title: item.title,
                         done: item.done,
                     })
                 "
             >
-                {{ item.message }}
             </p>
             <button
                 class="validate"
                 v-if="item.done"
-                v-on:click="item.done = false"
+                v-on:click="edit($event, item, {
+                        icon: item.icon,
+                        message: item.message,
+                        title: item.title,
+                        done: false,
+                    })"
             >
                 Cancel
             </button>
-            <button class="validate" v-else v-on:click="item.done = true">
+            <button class="validate" v-else v-on:click="edit($event, item, {
+                        icon: item.icon,
+                        message: item.message,
+                        title: item.title,
+                        done: true,
+                    })">
                 Validate
             </button>
             <button class="delete" v-on:click="remove($event, item)">

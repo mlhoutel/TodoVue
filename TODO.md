@@ -25,3 +25,8 @@
 ### Make an Identicon generator
 
 -   ex: http://identicon.net/
+
+
+1. Dynamic datas for the todo list
+2. Multiple todo lists
+3. Theme todo list (2 colors?)

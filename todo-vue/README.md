@@ -1,4 +1,4 @@
-# project-test
+# todo-vue
 
 ## Project setup
 ```
