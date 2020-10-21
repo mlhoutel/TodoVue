@@ -1,23 +1,30 @@
 {
-  "data": true,
-  "items": [
+  "lists": [
     {
-      "icon": "",
-      "message": "With some text here, write it like you want<br><div>On multiple lines,&nbsp;</div><div><br></div><div><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 54, 0);\">w</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 109, 0);\">i</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 163, 0);\">t</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 218, 0);\">h</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: transparent; text-shadow: none;\">&nbsp;</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(182, 255, 0);\">w</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(127, 255, 0);\">h</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(72, 255, 0);\">a</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(18, 255, 0);\">t</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 255, 36);\">e</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 255, 91);\">v</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 255, 145);\">e</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 255, 200);\">r</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: transparent; text-shadow: none;\">&nbsp;</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 200, 255);\">c</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 145, 255);\">o</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 91, 255);\">l</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(0, 36, 255);\">o</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(18, 0, 255);\">r</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: transparent; text-shadow: none;\">&nbsp;</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(127, 0, 255);\">y</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(182, 0, 255);\">o</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(236, 0, 255);\">u</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: transparent; text-shadow: none;\">&nbsp;</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 0, 163);\">w</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 0, 109);\">a</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 0, 54);\">n</span><span style=\"box-sizing: border-box; display: inline-block; font-family: Optima, Segoe, &quot;Segoe UI&quot;, Candara, Calibri, Arial, sans-serif; font-size: 26px; background-color: rgb(255, 255, 255, 0); color: rgb(255, 0, 0);\">t</span><br></div>",
-      "title": "You can add tasks",
-      "done": false
-    },
-    {
-      "icon": "",
-      "message": "<div>You can also add icons =&gt;&nbsp;<img height=\"24\" width=\"24\" src=\"https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/vue-dot-js.svg\"><br></div><div><br></div><div><div>... or even true html:</div></div><div><form data-v-3de47834=\"\" style=\"color: rgb(44, 62, 80);\"><input id=\"new-todo\" placeholder=\"Ex. feed the cat\" data-v-3de47834=\"\"><button data-v-3de47834=\"\">Add</button></form><div class=\"selector\" data-v-3de47834=\"\" style=\"color: rgb(44, 62, 80);\"><button class=\"select-all selected\" data-v-3de47834=\"\" style=\"width: 99.9844px;\">All</button><button class=\"select-todo\" data-v-3de47834=\"\" style=\"width: 99.9844px;\">Todo</button><button class=\"select-done\" data-v-3de47834=\"\" style=\"width: 99.9844px;\">Done</button></div></div>",
-      "title": "Demo of the list items",
-      "done": false
-    },
-    {
-      "icon": "",
-      "message": "",
-      "title": "You can Validate an Delete tasks",
-      "done": true
+      "icon": "<i>",
+      "title": "Title",
+      "message": "message...",
+      "selected": 0,
+      "items": [
+        {
+          "icon": "",
+          "message": "",
+          "title": "",
+          "done": false
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "",
+          "done": false
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "dfgfg",
+          "done": false
+        }
+      ]
     }
   ]
 }

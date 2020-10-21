@@ -1,14 +1,7 @@
 <template>
     <li class="todolistitem" v-bind:class="{ done: item.done }">
         <div>
-            <!--
-            <img
-                height="24"
-                width="24"
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/vue-dot-js.svg"
-            />
-            -->
-            <h3 contenteditable v-html="item.icon"></h3>
+            <h3 v-html="item.icon"></h3>
             <h3
                 contenteditable
                 spellcheck="false"
@@ -113,6 +106,7 @@ h3 {
     display: inline-block;
     margin-top: 10px;
     margin-bottom: 0px;
+    padding-right: 15px;
 }
 p {
     color: #dbd9d9;

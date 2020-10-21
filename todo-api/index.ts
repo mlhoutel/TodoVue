@@ -10,7 +10,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-const routes = require('./routes/routes.ts')(app, fs)
+const routes = require('./routes/routes.ts')(app, fs, port)
 const server = app.listen(port, () => {
     console.log(`Todo Api is listening on port ${port}!`)
 })

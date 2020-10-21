@@ -25,9 +25,9 @@ export default {
         TodoList,
         TodoListItem,
     },
-    data: function() : any {
+    data() {
         return {
-            id: 1,
+            id: 0,
             icon: 'Icon',
             title: 'List Title',
             message:
@@ -42,7 +42,7 @@ export default {
             if (title.length < 1) { return }
             let item = { icon: '', title: title, message: '', done: false }
             const axios = require('axios')
-            axios.post('http://localhost:3023/items', item)
+            axios.post(`http://localhost:3023/lists/${0}/items`, item)
 
             /* Update Current */
             items.push(item)
@@ -50,7 +50,7 @@ export default {
         remove(event: Event, item: Object, items: Array<Object>) {
             const axios = require('axios')
             let index = items.indexOf(item)
-            axios.delete('http://localhost:3023/items/'+index)
+            axios.delete(`http://localhost:3023/lists/${0}/items`+index)
 
             /* Update Current */
             items.splice(items.indexOf(item), 1)
@@ -64,7 +64,7 @@ export default {
             const axios = require('axios')
             let index = items.indexOf(item)
             if (index < 0) { return }
-            axios.put('http://localhost:3023/items/'+index, value)
+            axios.put(`http://localhost:3023/lists/${0}/items/${index}`, value)
             
             /* Update Current */
             items[items.indexOf(item)] = value
@@ -72,8 +72,8 @@ export default {
         read(items: Array<Object>) {
             const axios = require('axios')
             items.splice(0, items.length)
-            axios.get('http://localhost:3023/items').then(function(response : any){
-                let newitems : Array<any> = response.data["items"]
+            axios.get(`http://localhost:3023/lists/${0}/items`).then(function(response : any){
+                let newitems : Array<any> = response.data
                 for (let newitem of Object.values(newitems)) {
                     items.push(newitem)
                 }

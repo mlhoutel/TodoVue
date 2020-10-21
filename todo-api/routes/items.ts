@@ -16,34 +16,38 @@ const itemsRoutes = function(app, fs) {
     }
 
     // Create
-    app.post('/items', function(req, res) {
+    app.post('/lists/:idliste/items', function(req, res) {
         readFile(function(data) {
-            let obj = data //JSON.parse(data)
-            obj.items.push(req.body)
-            writeFile(JSON.stringify(obj, null, 2), function() { res.status(200).send('new item added') })
+            let object = data
+            const listId = req.params['idliste']
+            object.lists[listId].items.push(req.body)
+            writeFile(JSON.stringify(object, null, 2), function() { res.status(200).send('new item added') })
          }, true)
     })
 
     // Read
-    app.get('/items', function(req, res) {
-        readFile(function(data) { res.send(data) }, true)
+    app.get('/lists/:idliste/items', function(req, res) {
+        const listId = req.params['idliste']
+        readFile(function(data) { res.send(data.lists[listId].items) }, true)
     })
 
     // Update
-    app.put('/items/:id', function(req, res) {
+    app.put('/lists/:idliste/items/:id', function(req, res) {
         readFile(function(data) {
-            let obj = JSON.parse(data)
+            let object = JSON.parse(data)
             const itemId = req.params['id']
-            obj.items[itemId] = req.body
-            writeFile(JSON.stringify(obj, null, 2), function() { res.status(200).send(`item id:${itemId} updated`)})
+            const listId = req.params['idliste']
+            object.lists[listId].items[itemId] = req.body
+            writeFile(JSON.stringify(object, null, 2), function() { res.status(200).send(`item id:${itemId} updated`)})
         })
     })
     // Delete
-    app.delete('/items/:id', function(req, res) {
+    app.delete('/lists/:idliste/items/:id', function(req, res) {
         readFile(function(data) {
             let object = JSON.parse(data)
-            let array = object.items
             const itemId = req.params['id']
+            const listId = req.params['idliste']
+            let array = object.lists[listId].items
             array.splice(itemId, 1)
             writeFile(JSON.stringify(object, null, 2), function() { res.status(200).send(`item id:${itemId} removed`)})
         })
