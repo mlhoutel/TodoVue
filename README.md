@@ -1,6 +1,7 @@
 # TodoVue
-
-![Screenshot](screenshots/screenshot1.png?raw=true "Screenshot")
+<p align="center">
+  <img src="screenshots/screenshot1.png" />
+</p>
 
 ## Project setup
 ```
