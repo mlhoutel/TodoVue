@@ -1,9 +1,12 @@
 <template>
     <div class="todolist">
+        <router-link class="return" to="/lists">
+            <img src="../assets/back.svg">
+        </router-link>
         <div class="intro">
-            <h1 v-html="icon"></h1>
-            <h1 contenteditable spellcheck="false">{{ title }}</h1>
-            <p contenteditable spellcheck="false">{{ message }}</p>
+            <h1 contenteditable v-html="icon" v-on:blur="updateList($event, $event.target.innerText, title, message, selected)"></h1>
+            <h1 contenteditable spellcheck="false" v-on:blur="updateList($event, icon, $event.target.innerText, message, selected)">{{ title }}</h1>
+            <p contenteditable spellcheck="false" v-on:blur="updateList($event, icon, title, $event.target.innerText, selected)">{{ message }}</p>
         </div>
         <form v-on:submit.prevent>
             <label for="new-todo">Add a task</label>
@@ -12,7 +15,6 @@
                 id="new-todo"
                 placeholder="Ex. feed the cat"
             />
-            <!-- prettier-ignore -->
             <button v-on:click="SelfCreateItem($event, NewTitle)">
                 Add
             </button>
@@ -20,23 +22,23 @@
         <div class="selector">
             <button
                 class="select-all"
-                :class="{ selected: getSelected($event, 0, selected) }"
-                v-on:click="setSelected($event, 0, selected)"
+                :class="{ selected: getSelected($event, 0) }"
+                v-on:click="setSelected($event, 0)"
             >
                 All
             </button>
             <button
                 class="select-todo"
-                :class="{ selected: getSelected($event, 1, selected) }"
-                v-on:click="setSelected($event, 1, selected)"
+                :class="{ selected: getSelected($event, 1) }"
+                v-on:click="setSelected($event, 1)"
             >
                 Todo
             </button>
 
             <button
                 class="select-done"
-                :class="{ selected: getSelected($event, 2, selected) }"
-                v-on:click="setSelected($event, 2, selected)"
+                :class="{ selected: getSelected($event, 2) }"
+                v-on:click="setSelected($event, 2)"
             >
                 Done
             </button>
@@ -88,16 +90,24 @@ export default defineComponent({
         deleteItem: {
             type: Function,
             required: true,
+        },
+        updateList: {
+            type: Function,
+            required: true,
+        },
+        getSelected: {
+            type: Function,
+            required: true,
+        },
+        setSelected:  {
+            type: Function,
+            required: true,
         }
     },
     data() {
         return {
-            Selected: this.selected,
             NewTitle: '',
         }
-    },
-    mounted: function() {
-        this.readItem(this.items)
     },
     methods: {
         SelfCreateItem(event: Event, title: String) {
@@ -123,11 +133,11 @@ export default defineComponent({
         SelfDeleteItem(event: Event, item: Object) {
             this.deleteItem(event, item, this.items)
         },
-        getSelected(event: Event, value: number): boolean {
-            return this.Selected == value
+        SelfGetSelected(event: Event, value: number): boolean {
+            return this.getSelected(event, value)
         },
-        setSelected(event: Event, value: number) {
-            this.Selected = value
+        SelfSetSelected(event: Event, value: number) {
+            this.setSelected(event, value)
         }
     },
 })
@@ -139,6 +149,7 @@ export default defineComponent({
     margin: 0px;
 }
 .todolist {
+    position: relative;
     background-color: #014945;
     width: 640px;
     margin: auto;
@@ -248,13 +259,26 @@ form button:focus {
 }
 
 .selector button:focus,
+.return:focus,
 h1:focus,
 p:focus {
     outline: none;
 }
-
 button.selected {
     background-color: #007e69;
     color: #dbd9d9;
+}
+.return {
+    position: absolute;
+    left: 0px;
+    padding: 5px;
+    color: #dbd9d9;
+    border: none;
+    background-color: #007e69;
+}
+
+.return img {
+    height: 50px;
+    filter: invert(0.90);
 }
 </style>

@@ -28,6 +28,10 @@ const listsRoutes = function(app, fs) {
     app.get('/lists', function(req, res) {
         readFile(function(data) { res.send(data.lists) }, true)
     })
+    app.get('/lists/:idliste', function(req, res) {
+        const listId = req.params['idliste']
+        readFile(function(data) { res.send(data.lists[listId]) }, true)
+    })
 
     // Update
     app.put('/lists/:idliste', function(req, res) {
@@ -38,6 +42,7 @@ const listsRoutes = function(app, fs) {
             writeFile(JSON.stringify(object, null, 2), function() { res.status(200).send(`list id:${listId} updated`)})
         })
     })
+    
     // Delete
     app.delete('/lists/:idliste', function(req, res) {
         readFile(function(data) {

@@ -1,18 +1,68 @@
 {
   "lists": [
     {
-      "icon": "<i>",
-      "title": "Title",
-      "message": "message...",
-      "selected": 0,
+      "icon": "",
+      "title": "Première liste",
+      "message": "dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequ",
       "items": [
         {
           "icon": "",
-          "message": "First element text",
-          "title": "1. First element",
+          "message": "Message",
+          "title": "New item",
+          "done": true
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "NewItem",
+          "done": true
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "Super",
+          "done": true
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "1",
+          "done": false
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "2",
+          "done": true
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "3",
+          "done": true
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "icon": "",
+      "title": "Grocery List",
+      "message": "My grocery list",
+      "items": [
+        {
+          "icon": "",
+          "message": "Super",
+          "title": "New task",
+          "done": true
+        },
+        {
+          "icon": "",
+          "title": "New New Task",
+          "message": "",
           "done": false
         }
-      ]
+      ],
+      "selected": 0
     }
   ]
 }
