@@ -6,7 +6,7 @@
          <form v-on:submit.prevent>
             <label>Add a list</label>
             <input v-model="NewTitle" placeholder="Ex. grocery list"/>
-            <button v-on:click="createList($event, NewTitle)">Add</button>
+            <button v-on:click="SelfCreateList($event, NewTitle)">Add</button>
          </form>
         <MenuList
             v-for="(list, index) in lists" 
@@ -52,6 +52,10 @@ export default defineComponent ({
         }
     },
     methods: {
+        SelfCreateList(event: Event, title : String) {
+            this.NewTitle = ''
+            this.createList(event, title)
+        },
         SelfDeleteList(event: Event, list: Object) {
             this.deleteList(event, list, this.lists)
         },

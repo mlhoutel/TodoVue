@@ -96,7 +96,8 @@ p {
     border-radius: 3px;
 }
 .delete:focus, 
-h3:focus {
+h3:focus,
+button:focus {
     outline: none;
 }
 .dones {

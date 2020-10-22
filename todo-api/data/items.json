@@ -3,13 +3,13 @@
     {
       "icon": "",
       "title": "Première liste",
-      "message": "dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequ",
+      "message": "Lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi conseqa",
       "items": [
         {
           "icon": "",
           "message": "Message",
           "title": "New item",
-          "done": true
+          "done": false
         },
         {
           "icon": "",
@@ -21,7 +21,7 @@
           "icon": "",
           "message": "",
           "title": "Super",
-          "done": true
+          "done": false
         },
         {
           "icon": "",
@@ -33,13 +33,13 @@
           "icon": "",
           "message": "",
           "title": "2",
-          "done": true
+          "done": false
         },
         {
           "icon": "",
           "message": "",
           "title": "3",
-          "done": true
+          "done": false
         }
       ],
       "selected": 0
@@ -62,6 +62,57 @@
           "done": false
         }
       ],
+      "selected": 0
+    },
+    {
+      "icon": "",
+      "title": "Todo",
+      "message": "",
+      "items": [
+        {
+          "icon": "",
+          "message": "Description",
+          "title": "Task n°1",
+          "done": false
+        },
+        {
+          "icon": "",
+          "message": "Description",
+          "title": "Task n°2",
+          "done": true
+        },
+        {
+          "icon": "",
+          "message": "Description",
+          "title": "Task n°3",
+          "done": true
+        },
+        {
+          "icon": "",
+          "message": "Description",
+          "title": "Task n°4",
+          "done": false
+        },
+        {
+          "icon": "",
+          "message": "",
+          "title": "Task n°5",
+          "done": true
+        },
+        {
+          "icon": "",
+          "title": "Task n°6",
+          "message": "",
+          "done": false
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "icon": "",
+      "title": "New List",
+      "message": "",
+      "items": [],
       "selected": 0
     }
   ]
