@@ -6,7 +6,7 @@
                 contenteditable
                 spellcheck="false"
                 v-on:blur="
-                    edit($event, item, {
+                    updateItem($event, item, {
                         icon: item.icon,
                         message: item.message,
                         title: $event.target.innerText,
@@ -22,7 +22,7 @@
                 :class="{ emptymessage: isEmpty($event, item.message) }"
                 v-html="item.message "
                 v-on:blur="
-                    edit($event, item, {
+                    updateItem($event, item, {
                         icon: item.icon,
                         message: $event.target.innerHTML,
                         title: item.title,
@@ -34,7 +34,7 @@
             <button
                 class="validate"
                 v-if="item.done"
-                v-on:click="edit($event, item, {
+                v-on:click="updateItem($event, item, {
                         icon: item.icon,
                         message: item.message,
                         title: item.title,
@@ -43,7 +43,7 @@
             >
                 Cancel
             </button>
-            <button class="validate" v-else v-on:click="edit($event, item, {
+            <button class="validate" v-else v-on:click="updateItem($event, item, {
                         icon: item.icon,
                         message: item.message,
                         title: item.title,
@@ -51,7 +51,7 @@
                     })">
                 Validate
             </button>
-            <button class="delete" v-on:click="remove($event, item)">
+            <button class="delete" v-on:click="deleteItem($event, item)">
                 X
             </button>
         </div>
@@ -68,11 +68,11 @@ export default defineComponent({
             type: Object,
             required: true,
         },
-        remove: {
+        updateItem: {
             type: Function,
             required: true,
         },
-        edit: {
+        deleteItem: {
             type: Function,
             required: true,
         },

@@ -13,7 +13,7 @@
                 placeholder="Ex. feed the cat"
             />
             <!-- prettier-ignore -->
-            <button v-on:click="SelfAdd($event, NewTitle)">
+            <button v-on:click="SelfCreateItem($event, NewTitle)">
                 Add
             </button>
         </form>
@@ -43,12 +43,12 @@
         </div>
         <ul>
             <TodoListItem
-                v-for="(item, index) in Items($event)"
+                v-for="(item, index) in SelfReadItem($event)"
                 :item="item"
                 :index="index"
                 :key="item.id"
-                :remove="SelfRemove"
-                :edit="SelfEditItem"
+                :deleteItem="SelfDeleteItem"
+                :updateItem="SelfUpdateItem"
             />
         </ul>
     </div>
@@ -73,19 +73,19 @@ export default defineComponent({
             type: Array as () => Array<any>,
             default: () => [],
         },
-        add: {
+        createItem: {
             type: Function,
             required: true,
         },
-        remove: {
+        readItem: {
             type: Function,
             required: true,
         },
-        editItem: {
+        updateItem: {
             type: Function,
             required: true,
         },
-        read: {
+        deleteItem: {
             type: Function,
             required: true,
         }
@@ -97,27 +97,14 @@ export default defineComponent({
         }
     },
     mounted: function() {
-        this.read(this.items)
-        console.log(this.items)
+        this.readItem(this.items)
     },
     methods: {
-        SelfRemove(event: Event, item: Object) {
-            this.remove(event, item, this.items)
-        },
-        SelfAdd(event: Event, title: String) {
-            this.add(event, title, this.items)
+        SelfCreateItem(event: Event, title: String) {
+            this.createItem(event, title, this.items)
             this.NewTitle = ''
         },
-        SelfEditItem(event: Event, item: Object, value: Object) {
-            this.editItem(event, item, value, this.items)
-        },
-        getSelected(event: Event, value: number): boolean {
-            return this.Selected == value
-        },
-        setSelected(event: Event, value: number) {
-            this.Selected = value
-        },
-        Items(event: Event) {
+        SelfReadItem(event: Event) {
             if (this.getSelected(event, 0)) {
                 return this.items
             } else if (this.getSelected(event, 1)) {
@@ -130,6 +117,18 @@ export default defineComponent({
                 })
             }
         },
+        SelfUpdateItem(event: Event, item: Object, value: Object) {
+            this.updateItem(event, item, value, this.items)
+        },
+        SelfDeleteItem(event: Event, item: Object) {
+            this.deleteItem(event, item, this.items)
+        },
+        getSelected(event: Event, value: number): boolean {
+            return this.Selected == value
+        },
+        setSelected(event: Event, value: number) {
+            this.Selected = value
+        }
     },
 })
 </script>

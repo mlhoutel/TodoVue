@@ -7,10 +7,10 @@
             :message="message"
             :items="items"
             :selected="selected"
-            :add="add"
-            :remove="remove"
-            :editItem="editItem"
-            :read="read"
+            :createItem="createItem"
+            :readItem="readItem"
+            :updateItem="updateItem"
+            :deleteItem="deleteItem"
         />
     </div>
 </template>
@@ -37,39 +37,16 @@ export default {
         }
     },
     methods: {
-        add(event: Event, title: String, items: Array<Object>) {
+        createItem(event: Event, title: String, items: Array<Object>) {
             if (title == undefined) { return }
             if (title.length < 1) { return }
             let item = { icon: '', title: title, message: '', done: false }
             const axios = require('axios')
             axios.post(`http://localhost:3023/lists/${0}/items`, item)
-
             /* Update Current */
             items.push(item)
         },
-        remove(event: Event, item: Object, items: Array<Object>) {
-            const axios = require('axios')
-            let index = items.indexOf(item)
-            axios.delete(`http://localhost:3023/lists/${0}/items`+index)
-
-            /* Update Current */
-            items.splice(items.indexOf(item), 1)
-        },
-        editItem(
-            event: Event,
-            item: Object,
-            value: Object,
-            items: Array<Object>
-        ) {
-            const axios = require('axios')
-            let index = items.indexOf(item)
-            if (index < 0) { return }
-            axios.put(`http://localhost:3023/lists/${0}/items/${index}`, value)
-            
-            /* Update Current */
-            items[items.indexOf(item)] = value
-        },
-        read(items: Array<Object>) {
+        readItem(items: Array<Object>) {
             const axios = require('axios')
             items.splice(0, items.length)
             axios.get(`http://localhost:3023/lists/${0}/items`).then(function(response : any){
@@ -78,6 +55,23 @@ export default {
                     items.push(newitem)
                 }
             })
+        },
+        updateItem(event: Event, item: Object, value: Object, items: Array<Object>) {
+            const axios = require('axios')
+            let index = items.indexOf(item)
+            if (index < 0) { return }
+            axios.put(`http://localhost:3023/lists/${0}/items/${index}`, value)
+            
+            /* Update Current */
+            items[items.indexOf(item)] = value
+        },
+        deleteItem(event: Event, item: Object, items: Array<Object>) {
+            const axios = require('axios')
+            let index = items.indexOf(item)
+            axios.delete(`http://localhost:3023/lists/${0}/items/${index}`)
+
+            /* Update Current */
+            items.splice(items.indexOf(item), 1)
         }
     },
 }

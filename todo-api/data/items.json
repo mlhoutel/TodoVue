@@ -8,20 +8,8 @@
       "items": [
         {
           "icon": "",
-          "message": "",
-          "title": "",
-          "done": false
-        },
-        {
-          "icon": "",
-          "message": "",
-          "title": "",
-          "done": false
-        },
-        {
-          "icon": "",
-          "message": "",
-          "title": "dfgfg",
+          "message": "First element text",
+          "title": "1. First element",
           "done": false
         }
       ]
